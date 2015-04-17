@@ -238,8 +238,8 @@ public class SignInActivity extends Activity implements OnClickListener,
             case R.id.btn_sign_in:
                 // Signin button clicked
                 signInWithGplus();
-                //Intent i = new Intent(getApplicationContext(), MainActivity.class);
-                //startActivity(i);
+                Intent i = new Intent(getApplicationContext(), MainActivity.class);
+                startActivity(i);
                 break;
             case R.id.btn_sign_out:
                 // Signout button clicked
