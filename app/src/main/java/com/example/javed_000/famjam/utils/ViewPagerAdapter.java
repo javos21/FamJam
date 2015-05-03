@@ -1,8 +1,12 @@
-package com.example.javed_000.famjam;
+package com.example.javed_000.famjam.utils;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
+
+import com.example.javed_000.famjam.fragments.CirclesFragment;
+import com.example.javed_000.famjam.fragments.MapFragment;
+import com.example.javed_000.famjam.fragments.PlacesFragment;
 
 public class ViewPagerAdapter extends FragmentStatePagerAdapter {
 

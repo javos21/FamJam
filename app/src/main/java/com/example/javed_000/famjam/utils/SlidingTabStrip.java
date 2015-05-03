@@ -1,4 +1,4 @@
-package com.example.javed_000.famjam;
+package com.example.javed_000.famjam.utils;
 
 import android.R;
 import android.content.Context;
@@ -9,6 +9,8 @@ import android.util.AttributeSet;
 import android.util.TypedValue;
 import android.view.View;
 import android.widget.LinearLayout;
+
+import com.example.javed_000.famjam.utils.SlidingTabLayout;
 
 class SlidingTabStrip extends LinearLayout {
 

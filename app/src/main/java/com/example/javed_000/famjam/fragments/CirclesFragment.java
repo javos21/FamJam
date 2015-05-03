@@ -1,4 +1,4 @@
-package com.example.javed_000.famjam;
+package com.example.javed_000.famjam.fragments;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -8,6 +8,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.Toast;
+
+import com.example.javed_000.famjam.R;
 
 public class CirclesFragment extends Fragment {
 

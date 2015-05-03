@@ -1,4 +1,4 @@
-package com.example.javed_000.famjam;
+package com.example.javed_000.famjam.utils;
 
 import android.content.Context;
 import android.graphics.Typeface;

@@ -1,4 +1,4 @@
-package com.example.javed_000.famjam;
+package com.example.javed_000.famjam.fragments;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -12,7 +12,7 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.*;
 import com.google.android.gms.maps.SupportMapFragment;
-
+import com.example.javed_000.famjam.R;
 /**
  * Created by hp1 on 21-01-2015.
  */

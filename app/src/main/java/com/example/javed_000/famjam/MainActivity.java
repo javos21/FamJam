@@ -10,8 +10,8 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
-import com.example.javed_000.famjam.SlidingTabLayout;
-import com.example.javed_000.famjam.ViewPagerAdapter;
+import com.example.javed_000.famjam.utils.SlidingTabLayout;
+import com.example.javed_000.famjam.utils.ViewPagerAdapter;
 
 public class MainActivity extends ActionBarActivity {
 
