@@ -21,7 +21,11 @@
 
         <meta-data
             android:name="com.google.android.maps.v2.API_KEY"
-            android:value="AIzaSyAhgnZ7ESL-EIRS4Da_hGw_7u9IQI3SZE0" />
+            android:value="AIzaSyCoFyWHV5dH5rH1HVroXWUbCJXvZ9oC59o" />
+
+        <uses-feature
+            android:glEsVersion="0x00020000"
+            android:required="true"/>
 
         <activity
             android:name=".SignInActivity"

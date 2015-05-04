@@ -33,14 +33,14 @@ public class MapFragment extends Fragment {
          * may be thrown when initialising the map
          */
         try {
-            if(null == googleMap){
+            if(googleMap == null){
                 SupportMapFragment smf = (SupportMapFragment) getActivity().getSupportFragmentManager().findFragmentById(R.id.mapView);
                 smf.getMap();
                 /**
                  * If the map is still null after attempted initialisation,
                  * show an error to the user
                  */
-                if(null == googleMap) {
+                if(googleMap == null) {
                     Toast.makeText(getActivity().getBaseContext(),
                             "Error creating map", Toast.LENGTH_SHORT).show();
                 }

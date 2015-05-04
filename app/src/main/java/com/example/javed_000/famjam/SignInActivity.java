@@ -55,7 +55,7 @@ public class SignInActivity extends Activity implements OnClickListener,
 
     private SignInButton btnSignIn;
     private Button btnSignOut, btnRevokeAccess;
-    private ImageView imgProfilePic;
+    private ImageView imgProfilePic,logo;
     private TextView txtName, txtEmail;
     private LinearLayout llProfileLayout;
 
@@ -68,6 +68,7 @@ public class SignInActivity extends Activity implements OnClickListener,
         btnSignOut = (Button) findViewById(R.id.btn_sign_out);
         btnRevokeAccess = (Button) findViewById(R.id.btn_revoke_access);
         imgProfilePic = (ImageView) findViewById(R.id.imgProfilePic);
+        logo = (ImageView) findViewById(R.id.logo);
         txtName = (TextView) findViewById(R.id.txtName);
         txtEmail = (TextView) findViewById(R.id.txtEmail);
         llProfileLayout = (LinearLayout) findViewById(R.id.llProfile);
@@ -76,6 +77,7 @@ public class SignInActivity extends Activity implements OnClickListener,
         btnSignIn.setOnClickListener(this);
         btnSignOut.setOnClickListener(this);
         btnRevokeAccess.setOnClickListener(this);
+        logo.setOnClickListener(this);
 
         mGoogleApiClient = new GoogleApiClient.Builder(this)
                 .addConnectionCallbacks(this)
@@ -170,6 +172,7 @@ public class SignInActivity extends Activity implements OnClickListener,
             btnSignOut.setVisibility(View.VISIBLE);
             btnRevokeAccess.setVisibility(View.VISIBLE);
             llProfileLayout.setVisibility(View.VISIBLE);
+
         } else {
             btnSignIn.setVisibility(View.VISIBLE);
             btnSignOut.setVisibility(View.GONE);
@@ -238,8 +241,6 @@ public class SignInActivity extends Activity implements OnClickListener,
             case R.id.btn_sign_in:
                 // Signin button clicked
                 signInWithGplus();
-                Intent i = new Intent(getApplicationContext(), MainActivity.class);
-                startActivity(i);
                 break;
             case R.id.btn_sign_out:
                 // Signout button clicked
@@ -248,6 +249,10 @@ public class SignInActivity extends Activity implements OnClickListener,
             case R.id.btn_revoke_access:
                 // Revoke access button clicked
                 revokeGplusAccess();
+                break;
+            case R.id.logo:
+                Intent i = new Intent(getApplicationContext(), MainActivity.class);
+                startActivity(i);
                 break;
         }
     }
