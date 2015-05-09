@@ -158,7 +158,6 @@ public class SignInActivity extends Activity implements OnClickListener,
 
         // Update the UI after signin
         updateUI(true);
-
     }
 
     /**
@@ -166,15 +165,19 @@ public class SignInActivity extends Activity implements OnClickListener,
      * */
     private void updateUI(boolean isSignedIn) {
         if (isSignedIn) {
-            btnSignIn.setVisibility(View.GONE);
-            btnSignOut.setVisibility(View.VISIBLE);
-            btnRevokeAccess.setVisibility(View.VISIBLE);
-            llProfileLayout.setVisibility(View.VISIBLE);
+            Intent i = new Intent(getApplicationContext(), MainActivity.class);
+            startActivity(i);
+            //btnSignOut.setVisibility(View.VISIBLE);
+            //btnRevokeAccess.setVisibility(View.VISIBLE);
+            //llProfileLayout.setVisibility(View.VISIBLE);
+            //btnSignIn.setVisibility(View.GONE);
         } else {
-            btnSignIn.setVisibility(View.VISIBLE);
-            btnSignOut.setVisibility(View.GONE);
-            btnRevokeAccess.setVisibility(View.GONE);
-            llProfileLayout.setVisibility(View.GONE);
+            Intent i = new Intent(getApplicationContext(), SignInActivity.class);
+            startActivity(i);
+            //btnSignIn.setVisibility(View.VISIBLE);
+            //btnSignOut.setVisibility(View.GONE);
+            //btnRevokeAccess.setVisibility(View.GONE);
+            //llProfileLayout.setVisibility(View.GONE);
         }
     }
 
@@ -238,8 +241,6 @@ public class SignInActivity extends Activity implements OnClickListener,
             case R.id.btn_sign_in:
                 // Signin button clicked
                 signInWithGplus();
-                Intent i = new Intent(getApplicationContext(), MainActivity.class);
-                startActivity(i);
                 break;
             case R.id.btn_sign_out:
                 // Signout button clicked

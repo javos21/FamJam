@@ -1,5 +1,6 @@
 package com.example.javed_000.famjam;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -8,6 +9,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
+
+import com.example.javed_000.famjam.utils.GPSTracker;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.*;
@@ -18,29 +21,24 @@ import com.google.android.gms.maps.SupportMapFragment;
  */
 public class MapFragment extends Fragment {
 
-    GoogleMap googleMap;
+    private GoogleMap googleMap;
+    GPSTracker gps;
+    double latitude;
+    double longitude;
+
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View v =inflater.inflate(R.layout.map_tab,container,false);
         createMapView();
-        addMarker();
+        getLocation();
         return v;
     }
 
     private void createMapView(){
-        /**
-         * Catch the null pointer exception that
-         * may be thrown when initialising the map
-         */
         try {
-            if(null == googleMap){
-                SupportMapFragment smf = (SupportMapFragment) getActivity().getSupportFragmentManager().findFragmentById(R.id.mapView);
-                smf.getMap();
-                /**
-                 * If the map is still null after attempted initialisation,
-                 * show an error to the user
-                 */
-                if(null == googleMap) {
+            if(googleMap == null){
+                googleMap= ((SupportMapFragment) getChildFragmentManager().findFragmentById(R.id.mapView)).getMap();
+                if(googleMap == null) {
                     Toast.makeText(getActivity().getBaseContext(),
                             "Error creating map", Toast.LENGTH_SHORT).show();
                 }
@@ -50,15 +48,23 @@ public class MapFragment extends Fragment {
         }
     }
 
-    /**
-     * Adds a marker to the map
-     */
-    private void addMarker(){
+    private void getLocation(){
+        gps = new GPSTracker(this.getActivity());
+        if(gps.CanGetLocation()){
+            latitude = gps.getLatitude();
+            longitude = gps.getLongitude();
+            Log.e("MapFragment","lat = " + latitude + " and Long = " + longitude);
+            addMarker(latitude,longitude);
+            googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(latitude,longitude), 12));
+        } else {
+            gps.showSettingsAlert();
+        }
+    }
 
-        /** Make sure that the map has been initialised **/
-        if(null != googleMap){
+    private void addMarker(double lat, double lng){
+        if(googleMap != null){
             googleMap.addMarker(new MarkerOptions()
-                            .position(new LatLng(0, 0))
+                            .position(new LatLng(lat, lng))
                             .title("Marker")
                             .draggable(true)
             );

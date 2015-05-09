@@ -16,13 +16,13 @@ public class CirclesFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View v =inflater.inflate(R.layout.circles_tab,container,false);
-        FAB = (ImageButton)v.findViewById(R.id.imageButton);
-        FAB.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(getActivity().getBaseContext(),"Circles !",Toast.LENGTH_SHORT).show();
-            }
-        });
+        //FAB = (ImageButton)v.findViewById(R.id.imageButton);
+        //FAB.setOnClickListener(new View.OnClickListener() {
+        //    @Override
+        //    public void onClick(View v) {
+        //        Toast.makeText(getActivity().getBaseContext(),"Circles !",Toast.LENGTH_SHORT).show();
+        //    }
+        //});
         return v;
     }
 }
