@@ -94,6 +94,7 @@ public class SignInActivity extends Activity implements OnClickListener,
         super.onStop();
         if (mGoogleApiClient.isConnected()) {
             mGoogleApiClient.disconnect();
+            Toast.makeText(this, "signin stopped!", Toast.LENGTH_LONG).show();
         }
     }
 
@@ -160,6 +161,7 @@ public class SignInActivity extends Activity implements OnClickListener,
 
         // Update the UI after signin
         updateUI(true);
+
 
     }
 

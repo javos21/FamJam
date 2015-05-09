@@ -4,6 +4,7 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -12,11 +13,20 @@ import android.widget.Toast;
 
 import com.example.javed_000.famjam.utils.SlidingTabLayout;
 import com.example.javed_000.famjam.utils.ViewPagerAdapter;
+import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.api.CommonStatusCodes;
+import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.common.api.ResultCallback;
+import com.google.android.gms.plus.People;
+import com.google.android.gms.plus.Plus;
+import com.google.android.gms.plus.model.people.PersonBuffer;
 
-public class MainActivity extends ActionBarActivity {
+public class MainActivity extends ActionBarActivity implements GoogleApiClient.ConnectionCallbacks,
+        GoogleApiClient.OnConnectionFailedListener, ResultCallback<People.LoadPeopleResult> {
 
+    private static final String TAG = "Main activity ";
     // Declaring Your View and Variables
-
+    GoogleApiClient mGoogleApiClient;
     Toolbar toolbar;
     ImageButton FAB;
     ViewPager pager;
@@ -81,5 +91,43 @@ public class MainActivity extends ActionBarActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onConnected(Bundle bundle) {
+
+        Plus.PeopleApi.loadVisible(mGoogleApiClient, null)
+                .setResultCallback(this);
+
+
+        Toast.makeText(this, "User is connected in main!", Toast.LENGTH_LONG).show();
+    }
+
+    @Override
+    public void onConnectionSuspended(int i) {
+
+    }
+
+    @Override
+    public void onConnectionFailed(ConnectionResult connectionResult) {
+        Toast.makeText(this, "User is disconnected!", Toast.LENGTH_LONG).show();
+    }
+
+    @Override
+    public void onResult(People.LoadPeopleResult peopleData) {
+
+        if (peopleData.getStatus().getStatusCode() == CommonStatusCodes.SUCCESS) {
+            PersonBuffer personBuffer = peopleData.getPersonBuffer();
+            try {
+                int count = personBuffer.getCount();
+                for (int i = 0; i < count; i++) {
+                    Log.d(TAG, "Display name: " + personBuffer.get(i).getDisplayName());
+                }
+            } finally {
+                personBuffer.close();
+            }
+        } else {
+            Log.e(TAG, "Error requesting visible circles: " + peopleData.getStatus());
+        }
     }
 }

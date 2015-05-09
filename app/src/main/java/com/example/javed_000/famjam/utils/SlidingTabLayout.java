@@ -6,6 +6,7 @@ import android.os.Build;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.util.SparseArray;
 import android.util.TypedValue;
 import android.view.Gravity;
@@ -275,16 +276,23 @@ public class SlidingTabLayout extends HorizontalScrollView {
 
     }
 
-    private class TabClickListener implements View.OnClickListener {
-        @Override
-        public void onClick(View v) {
-            for (int i = 0; i < mTabStrip.getChildCount(); i++) {
-                if (v == mTabStrip.getChildAt(i)) {
-                    mViewPager.setCurrentItem(i);
-                    return;
+
+
+        private class TabClickListener implements View.OnClickListener {
+            @Override
+            public void onClick(View v) {
+
+                for (int i = 0; i < mTabStrip.getChildCount(); i++) {
+
+                    if (v == mTabStrip.getChildAt(i)) {
+
+                        mViewPager.setCurrentItem(i);
+                        Log.e("Sliding Tab", String.valueOf(i));
+                        return;
+
+                    }
                 }
             }
         }
-    }
 
 }
