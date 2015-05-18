@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="pokemon">
+        <item>Pikachu</item>
+        <item>Charizard</item>
+        <item>Ivysaur</item>
+        <item>Squirtle</item>
+        <item>Pidgeot</item>
+        <item>Butterfree</item>
+    </string-array>
+</resources>

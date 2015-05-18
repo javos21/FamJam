@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.javed_000.famjam" >
+    package="com.mathura.javed_000.famjam" >
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.GET_ACCOUNTS" />
@@ -10,7 +10,12 @@
     <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+  <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
 
+    <permission
+        android:name="com.mathura.gcm.permission.C2D_MESSAGE"
+        android:protectionLevel="signature" />
 
     <application
         android:allowBackup="true"
@@ -22,7 +27,7 @@
 
         <meta-data
             android:name="com.google.android.maps.v2.API_KEY"
-            android:value="AIzaSyAhgnZ7ESL-EIRS4Da_hGw_7u9IQI3SZE0" />
+            android:value="AIzaSyAPacjc_vV3caU1hoHRDpit2hdVry5lPvE" />
 
         <activity
             android:name=".SignInActivity"
@@ -37,6 +42,18 @@
             android:name=".MainActivity"
             android:label="@string/app_name" >
         </activity>
+
+        <receiver
+            android:name="com.mathura.javed_000.famjam.managers.GcmBroadcastReceiver"
+            android:permission="com.google.android.c2dm.permission.SEND" >
+            <intent-filter>
+                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+                <category android:name="com.example.javed_000.famjam.managers" />
+            </intent-filter>
+        </receiver>
+        <service android:name="com.mathura.javed_000.famjam.managers.GcmIntentService" />
+        <service android:name=".services.LocationService"
+            android:exported="false"/>
     </application>
 
 </manifest>

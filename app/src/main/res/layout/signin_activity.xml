@@ -4,7 +4,6 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="16dp"
-    android:background="@drawable/background2"
     tools:context=".SignInActivity" >
 
     <LinearLayout
@@ -45,7 +44,7 @@
         </LinearLayout>
     </LinearLayout>
 
-    <com.example.javed_000.famjam.utils.RoundedImageView
+    <com.mathura.javed_000.famjam.utils.RoundedImageView
         android:layout_width="150dp"
         android:layout_height="150dp"
         android:id="@+id/logo"
@@ -62,13 +61,6 @@
         android:text="@string/btn_logout_from_google"
         android:visibility="gone"
         android:layout_marginBottom="10dp"/>
-
-    <Button
-        android:id="@+id/btn_revoke_access"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/btn_revoke_access"
-        android:visibility="gone" />
 
     <TextView
         android:layout_width="wrap_content"
